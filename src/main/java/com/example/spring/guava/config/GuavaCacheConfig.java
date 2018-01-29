@@ -28,7 +28,7 @@ public class GuavaCacheConfig {
 
     @Bean
     public Cache defaultCacheBuilder() {
-        Cache cache = CacheBuilder.newBuilder()
+        return CacheBuilder.newBuilder()
                 .recordStats()
                 // 设置大小，条目数
                 .maximumSize(1 << 10)
@@ -39,7 +39,6 @@ public class GuavaCacheConfig {
                 // 移除监听
                 .removalListener((RemovalListener) removalNotification -> System.out.println("有缓存数据被移除了")
                 ).build();
-        return cache;
     }
 
     @Bean
